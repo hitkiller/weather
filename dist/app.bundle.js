@@ -51,12 +51,12 @@
 	    navigator.geolocation.getCurrentPosition(function (position) {
 	        var mylatitude = position.coords.latitude;
 	        var mylongitude = position.coords.longitude;
-	        get_myLocation(mylatitude, mylongitude);
+	        getMyLocation(mylatitude, mylongitude);
 	    });
 	}
 	else
 	    alert("Please turn on Geolocator on Browser.");
-	function get_myLocation(mylatitude, mylongitude) {
+	function getMyLocation(mylatitude, mylongitude) {
 	    var getJSON = function (url) {
 	        fetch(url)
 	            .then(function (response) {
@@ -71,7 +71,7 @@
 	            console.log('JSON from "' + url + '" parsed successfully!');
 	            console.log(data);
 	            var myLocation_weather_dataJson = data.list;
-	            format_data_1.DisplayWeatherData(myLocation_weather_dataJson);
+	            format_data_1.displayWeatherData(myLocation_weather_dataJson);
 	        })
 	            .catch(function (error) {
 	            console.error(error.message);
@@ -87,7 +87,7 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	function DisplayWeatherData(result) {
+	function displayWeatherData(result) {
 	    for (var r in result) {
 	        var wrapperElement = document.createElement('div'), str = "";
 	        wrapperElement.className = "city_details";
@@ -127,7 +127,7 @@
 	        document.getElementById("cities").appendChild(wrapperElement);
 	    }
 	}
-	exports.DisplayWeatherData = DisplayWeatherData;
+	exports.displayWeatherData = displayWeatherData;
 
 
 /***/ }

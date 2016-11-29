@@ -1,4 +1,4 @@
-import { DisplayWeatherData } from "./format-data";
+import { displayWeatherData } from "./format-data";
 
 const MY_OPENWEATHERMAP_API = "47bc4e43962dbb173c1a3a7b2d5d0aa9";
 
@@ -7,11 +7,11 @@ if (navigator.geolocation) {
         let mylatitude = position.coords.latitude;
         let mylongitude = position.coords.longitude;
 
-        get_myLocation(mylatitude, mylongitude);
+        getMyLocation(mylatitude, mylongitude);
     });
 } else alert("Please turn on Geolocator on Browser.");
 
-function get_myLocation(mylatitude: number, mylongitude: number) {
+function getMyLocation(mylatitude: number, mylongitude: number) {
 
     var getJSON = function(url: string) {
         fetch(url)
@@ -26,7 +26,7 @@ function get_myLocation(mylatitude: number, mylongitude: number) {
                 console.log('JSON from "' + url + '" parsed successfully!');
                 console.log(data);
                 var myLocation_weather_dataJson = data.list;
-                DisplayWeatherData(myLocation_weather_dataJson);
+              displayWeatherData(myLocation_weather_dataJson);
 
             })
             .catch(function(error) {

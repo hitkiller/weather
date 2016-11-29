@@ -1,4 +1,4 @@
-declare module WeatherData {
+declare module weatherData {
     export interface Coord {
         lon: number;
         lat: number;
@@ -47,7 +47,7 @@ declare module WeatherData {
 }
 
 
-export function DisplayWeatherData(result: WeatherData.RootObject[]) {
+export function displayWeatherData(result: weatherData.RootObject[]) {
     for (var r in result) {
         let wrapperElement = document.createElement('div'),
             str = "";
