@@ -1,0 +1,27 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "an application to get the weather data from openweathermap.org",
+  "main": "d:\\Projects\\!angular\\weather1\\",
+  "dependencies": {
+    "ts-loader": "^1.2.2",
+    "webpack": "^1.13.3",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.10",
+    "webpack-typescript": "^0.5.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "yes"
+  },
+  "keywords": [
+    "weather",
+    "weathermap"
+  ],
+  "author": "ac",
+  "license": "UNLICENSED"
+}

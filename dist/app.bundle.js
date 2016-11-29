@@ -71,7 +71,7 @@
 	            console.log('JSON from "' + url + '" parsed successfully!');
 	            console.log(data);
 	            var myLocation_weather_dataJson = data.list;
-	            format_data_1.FormatData(myLocation_weather_dataJson);
+	            format_data_1.DisplayWeatherData(myLocation_weather_dataJson);
 	        })
 	            .catch(function (error) {
 	            console.error(error.message);
@@ -87,44 +87,47 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	function FormatData(json) {
-	    var Person = (function () {
-	        function Person() {
-	            this.name = void 0;
-	            this.surname = void 0;
-	            this.age = void 0;
-	            this.addressArr = void 0;
-	            this.address = void 0;
+	function DisplayWeatherData(result) {
+	    for (var r in result) {
+	        var wrapperElement = document.createElement('div'), str = "";
+	        wrapperElement.className = "city_details";
+	        {
+	            if (result[r].name)
+	                str += "<span class='current_location'>" + result[r].name + " </span>";
 	        }
-	        __decorate([
-	            JsonProperty('Name'), 
-	            __metadata('design:type', String)
-	        ], Person.prototype, "name", void 0);
-	        __decorate([
-	            JsonProperty('xing'), 
-	            __metadata('design:type', String)
-	        ], Person.prototype, "surname", void 0);
-	        __decorate([
-	            JsonProperty({ clazz: Address, name: 'AddressArr' }), 
-	            __metadata('design:type', Array)
-	        ], Person.prototype, "addressArr", void 0);
-	        __decorate([
-	            JsonProperty({ clazz: Address, name: 'Address' }), 
-	            __metadata('design:type', Object)
-	        ], Person.prototype, "address", void 0);
-	        return Person;
-	    }());
+	        {
+	            if (result[r].main && result[r].main.temp)
+	                str += "<span class='current_temp'>" + result[r].main.temp + "&deg;C</span>";
+	        }
+	        {
+	            if (result[r].clouds && result[r].clouds.all)
+	                str += "<span class='current_clouds'>Clouds: " + result[r].clouds.all + "%</span>";
+	        }
+	        {
+	            if (result[r].main && result[r].main.humidity)
+	                str += "<span class='current_humidity'>Humidity: " + result[r].main.humidity + "%</span>";
+	        }
+	        {
+	            if (result[r].wind && result[r].wind.speed)
+	                str += "<span class='current_wind'>Wind: " + result[r].wind.speed + " m/s</span>";
+	        }
+	        {
+	            if (result[r].main && result[r].main.pressure)
+	                str += "<span class='current_pressure'>Pressure: " + result[r].main.pressure + "  hPa</span>";
+	        }
+	        {
+	            if (result[r].weather && result[r].weather[0] && result[r].weather[0].main)
+	                str += "<span class='current_weather_image " + result[r].weather[0].main + "'></span>";
+	        }
+	        {
+	            if (result[r].weather && result[r].weather[0] && result[r].weather[0].description)
+	                str += "<span class='current_weather'>Weather: " + result[r].weather[0].description + " </span>";
+	        }
+	        wrapperElement.innerHTML = str;
+	        document.getElementById("cities").appendChild(wrapperElement);
+	    }
 	}
-	exports.FormatData = FormatData;
+	exports.DisplayWeatherData = DisplayWeatherData;
 
 
 /***/ }
