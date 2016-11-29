@@ -4,10 +4,12 @@
   "description": "an application to get the weather data from openweathermap.org",
   "main": "d:\\Projects\\!angular\\weather1\\",
   "dependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/whatwg-fetch": "0.0.32",
     "ts-loader": "^1.2.2",
-    "webpack": "^1.13.3",
     "tslint": "^4.0.2",
     "typescript": "^2.0.10",
+    "webpack": "^1.13.3",
     "webpack-typescript": "^0.5.6"
   },
   "devDependencies": {},
